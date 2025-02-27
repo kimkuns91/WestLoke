@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import RootLayout from "@/components/layout/RootLayout";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "react-hot-toast";
+import { usePathname } from "next/navigation";
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -20,15 +21,18 @@ export function Providers({
   locale,
   timeZone,
 }: ProvidersProps) {
+  const pathname = usePathname();
+  const isAdminRoute = pathname?.startsWith("/dashboard");
+
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
         staleTime: 60 * 1000,
-        // gcTime: 60 * 60 * 1000,
-        // refetchOnWindowFocus: false,
       },
     },
   });
+
+  const content = isAdminRoute ? children : <RootLayout>{children}</RootLayout>;
 
   return (
     <NextIntlClientProvider
@@ -38,10 +42,8 @@ export function Providers({
     >
       <SessionProvider>
         <QueryClientProvider client={queryClient}>
-          <RootLayout>
-            {children}
-            <Toaster />
-          </RootLayout>
+          {content}
+          <Toaster />
         </QueryClientProvider>
       </SessionProvider>
     </NextIntlClientProvider>

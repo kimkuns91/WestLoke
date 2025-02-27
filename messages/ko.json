@@ -1,99 +1,136 @@
 {
-  "HomePage": {
-    "title": "진짜 소리를 찾는다면. Get Westloke"
-  },
-  "LocaleSwitcher": {
-    "label": "언어",
-    "en": "영어",
-    "ko": "한국어"
-  },
-  "Main": {
-    "title": "Westloke Amps",
-    "location": "보첼, 워싱턴주"
-  },
-  "GetInquiryButton": {
-    "label": "문의하기",
-    "sending": "문의 중...",
-    "signInRequired": "로그인이 필요합니다",
-    "inquirySent": "{name} 문의가 전송되었습니다",
-    "alreadyInquired": "이미 문의하신 제품입니다",
-    "inquiryError": "문의 전송에 실패했습니다"
-  },
-  "NotFound": {
-    "title": "페이지를 찾을 수 없습니다",
-    "description": "요청하신 페이지를 찾을 수 없습니다.",
-    "button": "메인으로 가기"
-  },
-  "DropDownUserMenu": {
-    "dashboard": "대시보드",
-    "mypage": "마이페이지",
-    "inquiry": "문의하기",
-    "logout": "로그아웃"
-  },
-  "NavMenu": {
-    "amplifiers": "앰프",
-    "gallery": "갤러리"
-  },
-  "SignInForm": {
-    "email": "이메일",
-    "password": "비밀번호",
-    "startLogin": "계정에 로그인하여 시작하세요",
-    "googleLogin": "Google로 계속하기",
-    "emailLogin": "이메일로 로그인",
-    "or": "또는",
-    "signup": "아직 계정이 없으신가요?",
-    "signupLink": "회원가입",
-    "forgotPassword": "비밀번호 찾기"
-  },
-  "UserProfile": {
-    "title": "프로필 정보",
-    "description": "회원님의 프로필 정보를 확인하고 수정할 수 있습니다",
-    "name": "이름",
-    "email": "이메일",
-    "joinDate": "가입일",
-    "role": "회원 등급",
-    "userRole": "일반 회원",
-    "adminRole": "관리자",
-    "editProfile": "프로필 수정",
-    "deleteAccount": "회원 탈퇴",
-    "deleteAccountDescription": "탈퇴 시 복구할 수 없습니다",
-    "cancel": "취소",
-    "confirm": "탈퇴하기",
-    "deleting": "처리중...",
-    "deleteSuccess": "계정이 삭제되었습니다",
-    "deleteError": "계정 삭제에 실패했습니다",
-    "error": "오류가 발생했습니다",
-    "errorDescription": "사용자 정보를 불러오는데 실패했습니다"
-  },
-  "InquiryPage": {
-    "title": "문의 내역",
-    "noInquiries": "문의 내역이 없습니다",
-    "price": "가격",
-    "inquiryDate": "문의일",
-    "cancel": "취소",
-    "canceling": "취소 중...",
-    "cancelSuccess": "문의가 취소되었습니다",
-    "cancelError": "문의 취소에 실패했습니다"
-  },
-  "FeaturedSection": {
-    "title": "비디오 보기",
-    "description": "최신 비디오를 확인하세요",
-    "button": "비디오 보기"
-  },
-  "StayTuned": {
-    "title": "Stay Tuned",
-    "description": "이벤트와 뉴스레터를 확인하세요",
-    "emailPlaceholder": "이메일 주소",
-    "subscribe": "구독하기",
-    "subscribeSuccess": "구독이 완료되었습니다",
-    "alreadySubscribed": "이미 구독 중입니다",
-    "invalidEmail": "올바른 이메일 형식이 아닙니다",
-    "emailRequired": "이메일을 입력해주세요",
-    "subscribeError": "구독 처리에 실패했습니다",
-    "unsubscribe": "구독 취소",
-    "unsubscribeSuccess": "구독이 취소되었습니다",
-    "subscribing": "구독 중...",
-    "unsubscribing": "구독 취소 중...",
-    "loading": "처리 중..."
-  }
+    "HomePage": {
+        "title": "진짜 소리를 찾는다면. Get Westloke"
+    },
+    "LocaleSwitcher": {
+        "label": "언어",
+        "en": "영어",
+        "ko": "한국어"
+    },
+    "Main": {
+        "title": "Westloke Amps",
+        "location": "보첼, 워싱턴주"
+    },
+    "GetInquiryButton": {
+        "label": "문의하기",
+        "sending": "문의 중...",
+        "signInRequired": "로그인이 필요합니다",
+        "inquirySent": "{name} 문의가 전송되었습니다",
+        "alreadyInquired": "이미 문의하신 제품입니다",
+        "inquiryError": "문의 전송에 실패했습니다"
+    },
+    "NotFound": {
+        "title": "페이지를 찾을 수 없습니다",
+        "description": "요청하신 페이지를 찾을 수 없습니다.",
+        "button": "메인으로 가기"
+    },
+    "DropDownUserMenu": {
+        "dashboard": "대시보드",
+        "mypage": "마이페이지",
+        "inquiry": "문의하기",
+        "logout": "로그아웃"
+    },
+    "NavMenu": {
+        "amplifiers": "앰프",
+        "gallery": "갤러리"
+    },
+    "SignInForm": {
+        "email": "이메일",
+        "password": "비밀번호",
+        "startLogin": "계정에 로그인하여 시작하세요",
+        "googleLogin": "Google로 계속하기",
+        "emailLogin": "이메일로 로그인",
+        "or": "또는",
+        "signup": "아직 계정이 없으신가요?",
+        "signupLink": "회원가입",
+        "forgotPassword": "비밀번호 찾기"
+    },
+    "UserProfile": {
+        "title": "프로필 정보",
+        "description": "회원님의 프로필 정보를 확인하고 수정할 수 있습니다",
+        "name": "이름",
+        "email": "이메일",
+        "joinDate": "가입일",
+        "role": "회원 등급",
+        "userRole": "일반 회원",
+        "adminRole": "관리자",
+        "editProfile": "프로필 수정",
+        "deleteAccount": "회원 탈퇴",
+        "deleteAccountDescription": "탈퇴 시 복구할 수 없습니다",
+        "cancel": "취소",
+        "confirm": "탈퇴하기",
+        "deleting": "처리중...",
+        "deleteSuccess": "계정이 삭제되었습니다",
+        "deleteError": "계정 삭제에 실패했습니다",
+        "error": "오류가 발생했습니다",
+        "errorDescription": "사용자 정보를 불러오는데 실패했습니다"
+    },
+    "InquiryPage": {
+        "title": "문의 내역",
+        "noInquiries": "문의 내역이 없습니다",
+        "price": "가격",
+        "inquiryDate": "문의일",
+        "cancel": "취소",
+        "canceling": "취소 중...",
+        "cancelSuccess": "문의가 취소되었습니다",
+        "cancelError": "문의 취소에 실패했습니다"
+    },
+    "FeaturedSection": {
+        "title": "비디오 보기",
+        "description": "최신 비디오를 확인하세요",
+        "button": "비디오 보기"
+    },
+    "StayTuned": {
+        "title": "Stay Tuned",
+        "description": "이벤트와 뉴스레터를 확인하세요",
+        "emailPlaceholder": "이메일 주소",
+        "subscribe": "구독하기",
+        "subscribeSuccess": "구독이 완료되었습니다",
+        "alreadySubscribed": "이미 구독 중입니다",
+        "invalidEmail": "올바른 이메일 형식이 아닙니다",
+        "emailRequired": "이메일을 입력해주세요",
+        "subscribeError": "구독 처리에 실패했습니다",
+        "unsubscribe": "구독 취소",
+        "unsubscribeSuccess": "구독이 취소되었습니다",
+        "subscribing": "구독 중...",
+        "unsubscribing": "구독 취소 중...",
+        "loading": "처리 중..."
+    },
+    "SignUpForm": {
+        "title": "회원가입",
+        "name": "이름",
+        "email": "이메일",
+        "password": "비밀번호",
+        "confirmPassword": "비밀번호 확인",
+        "namePlaceholder": "이름을 입력하세요",
+        "emailPlaceholder": "이메일을 입력하세요",
+        "passwordPlaceholder": "비밀번호를 입력하세요",
+        "confirmPasswordPlaceholder": "비밀번호를 다시 입력하세요",
+        "submit": "가입하기",
+        "loading": "처리중...",
+        "haveAccount": "이미 계정이 있으신가요?",
+        "login": "로그인",
+        "errors": {
+            "passwordMismatch": "비밀번호가 일치하지 않습니다",
+            "signupSuccess": "회원가입이 완료되었습니다",
+            "redirecting": "로그인 페이지로 이동합니다",
+            "signupFailed": "회원가입 실패",
+            "tryAgain": "다시 시도해주세요",
+            "nameRequired": "이름을 입력해주세요",
+            "nameMin": "이름은 2자 이상이어야 합니다",
+            "emailRequired": "이메일을 입력해주세요",
+            "emailInvalid": "올바른 이메일 형식이 아닙니다",
+            "passwordRequired": "비밀번호를 입력해주세요",
+            "passwordMin": "비밀번호는 8자 이상이어야 합니다",
+            "passwordPattern": "비밀번호는 영문, 숫자, 특수문자를 포함해야 합니다",
+            "confirmPasswordRequired": "비밀번호 확인을 입력해주세요",
+            "confirmPasswordMatch": "비밀번호가 일치하지 않습니다",
+            "existingGoogleUser": "이미 Google 계정으로 가입된 이메일입니다",
+            "useGoogleSignIn": "Google 로그인을 이용해주세요",
+            "existingGithubUser": "이미 Github 계정으로 가입된 이메일입니다",
+            "useGithubSignIn": "Github 로그인을 이용해주세요",
+            "existingEmailUser": "이미 가입된 이메일입니다",
+            "useEmailSignIn": "이메일 로그인을 이용해주세요"
+        }
+    }
 }

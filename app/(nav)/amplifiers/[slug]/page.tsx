@@ -18,110 +18,92 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="container pb-40 pt-20">
-      <div className="flex gap-9">
+    <div className="container px-4 pb-20 pt-8 md:px-6 md:pb-40 md:pt-20">
+      {/* 제품 상세 정보 섹션 */}
+      <div className="flex flex-col gap-6 md:flex-row md:gap-9">
         {/* 왼쪽 제품 이미지 */}
-        <div className="h-full max-h-[500px] w-1/2 rounded-lg bg-[#F7F7F7] p-4">
+        <div className="w-full rounded-lg bg-[#F7F7F7] p-4 md:h-full md:max-h-[500px] md:w-1/2">
           <Image
             src={amp.thumbnail}
             alt={amp.name}
             width={400}
             height={400}
-            className="h-auto w-full"
+            className="mx-auto h-auto w-full"
+            priority
           />
         </div>
 
         {/* 오른쪽 제품 정보 */}
-        <div className="w-1/2 space-y-6">
+        <div className="w-full md:w-1/2 md:space-y-6">
           {/* 제품 정보 헤더 */}
           <div className="flex flex-col">
             {/* 상단 제목과 버튼 */}
-            <div className="mb-4 flex items-start justify-between">
+            <div className="mb-4 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
               <div>
-                <h1 className="mb-1 text-4xl font-bold">{amp.name}</h1>
-                <p className="text-xl font-medium">{amp.description}</p>
+                <h1 className="mb-1 text-2xl font-bold md:text-4xl">
+                  {amp.name}
+                </h1>
+                <p className="text-base md:text-xl">{amp.description}</p>
               </div>
               <GetInquiryButton model={amp} />
             </div>
 
             {/* 가격 */}
-            <p className="mb-2 text-2xl font-semibold">
+            <p className="mb-2 text-xl font-semibold md:text-2xl">
               ${amp.price.toLocaleString()}
             </p>
           </div>
 
           {/* 구분선 */}
-          <hr className="my-2 border-gray-200" />
+          <hr className="my-6 border-gray-200 md:my-2" />
 
           {/* Specs 섹션 */}
           <div>
-            <h3 className="mb-4 text-lg font-semibold text-gray-400">Specs</h3>
+            <h3 className="mb-4 text-base font-semibold text-gray-400 md:text-lg">
+              Specs
+            </h3>
             <div className="space-y-3">
-              <div className="grid grid-cols-[160px,1fr] gap-y-3">
-                <div className="flex items-center gap-2 text-gray-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-gray-400"></span>
-                  Controls
-                </div>
-                <div>{amp.specs.controls}</div>
-
-                <div className="flex items-center gap-2 text-gray-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-gray-400"></span>
-                  Preamp Tube
-                </div>
-                <div>{amp.specs.preampTube}</div>
-
-                <div className="flex items-center gap-2 text-gray-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-gray-400"></span>
-                  Power Tube
-                </div>
-                <div>{amp.specs.powerTube}</div>
-
-                <div className="flex items-center gap-2 text-gray-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-gray-400"></span>
-                  Rectifier
-                </div>
-                <div>{amp.specs.rectifier}</div>
-
-                <div className="flex items-center gap-2 text-gray-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-gray-400"></span>
-                  Speaker
-                </div>
-                <div>{amp.specs.speaker}</div>
-
-                <div className="flex items-center gap-2 text-gray-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-gray-400"></span>
-                  Cabinet
-                </div>
-                <div>{amp.specs.cabinet}</div>
+              <div className="grid grid-cols-[120px,1fr] gap-y-3 md:grid-cols-[160px,1fr]">
+                {Object.entries(amp.specs).map(([key, value]) => (
+                  <div key={key} className="contents">
+                    <div className="flex items-center gap-2 text-sm text-gray-400 md:text-base">
+                      <span className="h-1.5 w-1.5 rounded-full bg-gray-400"></span>
+                      {key.charAt(0).toUpperCase() +
+                        key.slice(1).replace(/([A-Z])/g, " $1")}
+                    </div>
+                    <div className="text-sm md:text-base">{value}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
           {/* 제품 크기 이미지 */}
-          <div className="w-1/2 pt-2">
+          <div className="w-full pt-6 md:w-1/2 md:pt-2">
             <Image
               src={amp.spec_image}
               alt={`${amp.name} specifications`}
               width={400}
               height={200}
-              className="object-contain"
+              className="mx-auto object-contain"
             />
           </div>
 
           {/* Warranty 섹션 */}
-          <div className="pt-2">
-            <h3 className="mb-2 text-lg font-semibold text-gray-400">
+          <div className="pt-6 md:pt-2">
+            <h3 className="mb-2 text-base font-semibold text-gray-400 md:text-lg">
               Warranty
             </h3>
-            <div className="text-sm font-medium text-gray-400">
+            <div className="text-xs font-medium text-gray-400 md:text-sm">
               <p>{amp.warranty.amp}</p>
               <p>{amp.warranty.tubes}</p>
             </div>
           </div>
         </div>
       </div>
+
       {/* 이미지 갤러리 */}
-      <div className="mx-auto mt-40 flex w-full max-w-[763px] flex-col gap-8">
+      <div className="mx-auto mt-20 flex w-full max-w-[763px] flex-col gap-4 md:mt-40 md:gap-8">
         {amp.images.map((image: string) => (
           <div
             key={image}
@@ -131,6 +113,7 @@ export default async function Page({ params }: PageProps) {
               src={image}
               alt={`${amp.name} detail`}
               fill
+              sizes="(max-width: 768px) 100vw, 763px"
               className="object-cover"
             />
           </div>

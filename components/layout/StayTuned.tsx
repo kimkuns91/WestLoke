@@ -100,40 +100,44 @@ const StayTuned = () => {
     <div className="bg-[#F3EEEA]">
       <div
         className={cn(
-          "mx-auto w-[660px] py-8",
+          "mx-auto w-full px-4 py-8 md:w-[660px] md:px-0 md:py-12",
           "flex flex-col items-center justify-center"
         )}
       >
-        <h2 className="text-4xl font-semibold">{t("title")}</h2>
-        <p className="mt-2 text-base font-medium">{t("description")}</p>
+        <h2 className="text-center text-2xl font-semibold md:text-4xl">
+          {t("title")}
+        </h2>
+        <p className="mt-2 text-center text-sm font-medium md:text-base">
+          {t("description")}
+        </p>
         <form
           onSubmit={handleSubscribe}
-          className="mt-8 flex w-full items-center justify-between gap-2"
+          className="mt-6 flex w-full flex-col gap-3 md:mt-8 md:flex-row md:items-center md:justify-between md:gap-2"
         >
           {status !== "authenticated" && (
             <input
               type="email"
               placeholder={t("emailPlaceholder")}
-              className="h-12 flex-1 border border-black bg-inherit px-4"
+              className="h-10 flex-1 border border-black bg-inherit px-4 md:h-12"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           )}
           <button
             className={cn(
-              "h-12 text-white transition-all duration-300 ease-in-out",
+              "h-10 text-sm text-white transition-all duration-300 ease-in-out md:h-12 md:text-base",
               status === "authenticated" && "w-full",
               isSubscribed
                 ? "bg-gray-600 hover:bg-gray-700"
                 : "bg-[#B50000] hover:bg-[#FF0000]",
-              "px-16",
+              "px-8 md:px-16",
               loading && "cursor-not-allowed opacity-75"
             )}
             disabled={loading}
           >
             {loading ? (
               <div className="flex items-center justify-center gap-2">
-                <Spinner size="lg" color="white" />
+                <Spinner size="sm" color="white" className="md:size-lg" />
                 <span>{getButtonText()}</span>
               </div>
             ) : (
@@ -141,11 +145,22 @@ const StayTuned = () => {
             )}
           </button>
         </form>
-        <div className={cn("mt-16 flex gap-8", "text-2xl")}>
-          <Link href={westlokeamps} className="Menu">
+        <div
+          className={cn(
+            "mt-10 flex gap-6 md:mt-16 md:gap-8",
+            "text-xl md:text-2xl"
+          )}
+        >
+          <Link
+            href={westlokeamps}
+            className="Menu transition-colors hover:text-gray-600"
+          >
             <FiInstagram />
           </Link>
-          <Link href={westlokemusicEmail} className="Menu">
+          <Link
+            href={westlokemusicEmail}
+            className="Menu transition-colors hover:text-gray-600"
+          >
             <FiMail />
           </Link>
         </div>

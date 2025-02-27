@@ -8,13 +8,11 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <main className="flex flex-1 flex-col">
+    <div className="flex flex-1 flex-col">
       <Header />
-      <main className="flex w-full flex-1 flex-col">
-        {children}
-        <StayTuned />
-        <Footer />
-      </main>
-    </main>
+      <main className="flex w-full flex-1 flex-col">{children}</main>
+      <StayTuned />
+      <Footer />
+    </div>
   );
 }

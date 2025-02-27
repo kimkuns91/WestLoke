@@ -1,6 +1,7 @@
 "use server";
 
 import { auth } from "@/auth";
+import { formatDate } from "@/lib/utils";
 import { prisma } from "@/lib/prisma";
 import { sendMail } from "@/utils/mailer";
 
@@ -168,4 +169,22 @@ export async function getSubscriptionStatus() {
     console.error("Failed to get subscription status:", error);
     return { isSubscribed: false };
   }
+}
+
+export async function getSubscriberStats() {
+  const subscribers = await prisma.subscription.groupBy({
+    by: ["createdAt"],
+    _count: {
+      id: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    take: 30,
+  });
+
+  return subscribers.map((sub) => ({
+    date: formatDate(sub.createdAt),
+    subscribers: sub._count.id,
+  }));
 }

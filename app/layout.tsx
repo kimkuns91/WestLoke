@@ -28,8 +28,10 @@ export const metadata: Metadata = {
     default: "WestLoke Amps | Handcrafted Tube Amplifiers",
     template: "%s | WestLoke Amps",
   },
-  description:
-    "Handcrafted boutique tube amplifiers made in Bothell, Washington. Experience the true tone with WestLoke Amps.",
+  description: "Handcrafted boutique tube amplifiers",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
+  ),
   keywords: [
     "tube amp",
     "guitar amplifier",
@@ -80,11 +82,6 @@ export const metadata: Metadata = {
     description:
       "Handcrafted boutique tube amplifiers made in Bothell, Washington",
     images: ["/images/og-image.jpg"], // 트위터 카드 이미지 경로 설정 필요
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
   },
   icons: {
     icon: "/favicon.ico",

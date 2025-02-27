@@ -25,13 +25,13 @@ model User {
   role            UserRole        @default(USER)
   inquiries     Inquiry[]
   isSubscribed  Boolean       @default(false)
-
+  
   Authenticator Authenticator[]
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   @@map("users")
-}
+} 
 
 model Account {
   id                String  @id @default(auto()) @map("_id") @db.ObjectId
@@ -103,6 +103,7 @@ model Inquiry {
   amplifierId String   @db.ObjectId
   userId      String   @db.ObjectId
   createdAt   DateTime @default(now())
+  status      String   @default("PENDING")
   
   user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   amplifier Amplifier @relation(fields: [amplifierId], references: [id], onDelete: Cascade)

@@ -330,3 +330,39 @@ export async function cancelInquiry(inquiryId: string) {
     throw error;
   }
 }
+
+export async function getRecentInquiries(limit = 5) {
+  return prisma.inquiry.findMany({
+    orderBy: { createdAt: "desc" },
+    take: limit,
+    select: {
+      id: true,
+      status: true,
+      createdAt: true,
+      user: {
+        select: {
+          email: true,
+        },
+      },
+    },
+  });
+}
+
+export async function getAllInquiries() {
+  return prisma.inquiry.findMany({
+    orderBy: { createdAt: "desc" },
+    include: {
+      user: {
+        select: {
+          name: true,
+          email: true,
+        },
+      },
+      amplifier: {
+        select: {
+          name: true,
+        },
+      },
+    },
+  });
+}
