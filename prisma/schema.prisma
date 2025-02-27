@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}
+
+model User {
+  id              String      @id @default(auto()) @map("_id") @db.ObjectId
+  name          String?
+  email         String         @unique
+  hashedPassword String?
+  emailVerified DateTime?
+  
+  image         String?    @default("/images/noUser.webp")
+  accounts      Account[]
+  sessions      Session[]
+  role            UserRole        @default(USER)
+  inquiries     Inquiry[]
+  isSubscribed  Boolean       @default(false)
+
+  Authenticator Authenticator[]
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String   @db.ObjectId
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VerificationToken {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  identifier String
+  token      String
+  expires    DateTime
+ 
+  @@unique([identifier, token])
+}
+
+model Subscription {
+  id              String      @id @default(auto()) @map("_id") @db.ObjectId
+  email           String      @unique
+  createdAt       DateTime    @default(now())
+  isActive        Boolean       @default(true)  
+}
+
+model Amplifier {
+  id              String      @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  name_slug       String
+  description     String
+  price           Int
+  specs           Json        @default("{\"controls\":\"\",\"preampTube\":\"\",\"powerTube\":\"\",\"rectifier\":\"\",\"speaker\":\"\",\"cabinet\":\"\"}")
+  thumbnail       String
+  spec_image      String
+  warranty        Json        @default("{\"amp\":\"\",\"tubes\":\"\"}")
+  images          Json        @default("[]")
+  inquiries       Inquiry[]
+  createdAt       DateTime    @default(now())
+}
+
+model Inquiry {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  amplifierId String   @db.ObjectId
+  userId      String   @db.ObjectId
+  createdAt   DateTime @default(now())
+  
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amplifier Amplifier @relation(fields: [amplifierId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, amplifierId])
+}
+
+// Optional for WebAuthn support
+model Authenticator {
+  credentialID         String  @id @map("_id")
+  userId               String  @db.ObjectId
+  providerAccountId    String
+  credentialPublicKey  String
+  counter              Int
+  credentialDeviceType String
+  credentialBackedUp   Boolean
+  transports           String?
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@unique([userId, credentialID])
+}

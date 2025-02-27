@@ -1,0 +1,99 @@
+{
+  "HomePage": {
+    "title": "Westloke Amps"
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "en": "English",
+    "ko": "Korean"
+  },
+  "Main": {
+    "title": "Westloke Amps",
+    "location": "Bothell,WA"
+  },
+  "GetInquiryButton": {
+    "label": "Get Inquiry",
+    "sending": "Sending...",
+    "signInRequired": "Please sign in to get inquiry",
+    "inquirySent": "Inquiry for {name} has been sent",
+    "alreadyInquired": "You have already inquired about this product",
+    "inquiryError": "Failed to send inquiry"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist.",
+    "button": "Go to main"
+  },
+  "DropDownUserMenu": {
+    "dashboard": "Dashboard",
+    "mypage": "My Page",
+    "inquiry": "Inquiry",
+    "logout": "Logout"
+  },
+  "NavMenu": {
+    "amplifiers": "Amplifiers",
+    "gallery": "Gallery"
+  },
+  "SignInForm": {
+    "email": "Email",
+    "password": "Password",
+    "startLogin": "Sign in to your account to start",
+    "googleLogin": "Continue with Google",
+    "emailLogin": "Email login",
+    "or": "Or",
+    "signup": "Don't have an account?",
+    "signupLink": "Sign up",
+    "forgotPassword": "Forgot password?"
+  },
+  "UserProfile": {
+    "title": "My Profile",
+    "description": "View and edit your profile information",
+    "name": "Name",
+    "email": "Email",
+    "joinDate": "Join Date",
+    "role": "Role",
+    "userRole": "User",
+    "adminRole": "Admin",
+    "editProfile": "Edit Profile",
+    "deleteAccount": "Delete Account",
+    "deleteAccountDescription": "This action cannot be undone",
+    "cancel": "Cancel",
+    "confirm": "Delete",
+    "deleting": "Processing...",
+    "deleteSuccess": "Account has been deleted",
+    "deleteError": "Failed to delete account",
+    "error": "An error occurred",
+    "errorDescription": "Failed to load user profile"
+  },
+  "InquiryPage": {
+    "title": "My Inquiries",
+    "noInquiries": "No inquiries yet",
+    "price": "Price",
+    "inquiryDate": "Inquiry Date",
+    "cancel": "Cancel",
+    "canceling": "Canceling...",
+    "cancelSuccess": "Inquiry has been canceled",
+    "cancelError": "Failed to cancel inquiry"
+  },
+  "FeaturedSection": {
+    "title": "Watch Video",
+    "description": "Check out our latest video",
+    "button": "Watch Video"
+  },
+  "StayTuned": {
+    "title": "Stay Tuned",
+    "description": "Check out Events and Newsletter",
+    "emailPlaceholder": "Your Email",
+    "subscribe": "Subscribe",
+    "subscribeSuccess": "Successfully subscribed",
+    "alreadySubscribed": "Already subscribed",
+    "invalidEmail": "Invalid email format",
+    "emailRequired": "Email is required",
+    "subscribeError": "Failed to subscribe",
+    "unsubscribe": "Unsubscribe",
+    "unsubscribeSuccess": "Successfully unsubscribed",
+    "subscribing": "Subscribing...",
+    "unsubscribing": "Unsubscribing...",
+    "loading": "Processing..."
+  }
+}
