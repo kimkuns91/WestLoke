@@ -10,9 +10,10 @@ import { useTranslations } from "next-intl";
 
 interface GetInquiryButtonProps {
   model: IAmplifier;
+  className?: string;
 }
 
-const GetInquiryButton = ({ model }: GetInquiryButtonProps) => {
+const GetInquiryButton = ({ model, className }: GetInquiryButtonProps) => {
   const { status } = useSession();
   const t = useTranslations("GetInquiryButton");
   const [isLoading, setIsLoading] = useState(false);
@@ -66,7 +67,8 @@ const GetInquiryButton = ({ model }: GetInquiryButtonProps) => {
       className={cn(
         "rounded-full bg-black px-8 py-2 font-medium text-white",
         "transition-opacity duration-300 hover:opacity-70",
-        "disabled:cursor-not-allowed disabled:opacity-50"
+        "disabled:cursor-not-allowed disabled:opacity-50",
+        className
       )}
     >
       {isLoading ? t("sending") : t("label")}

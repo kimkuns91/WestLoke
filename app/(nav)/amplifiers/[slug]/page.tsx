@@ -35,23 +35,32 @@ export default async function Page({ params }: PageProps) {
 
         {/* 오른쪽 제품 정보 */}
         <div className="w-full md:w-1/2 md:space-y-6">
-          {/* 제품 정보 헤더 */}
-          <div className="flex flex-col">
-            {/* 상단 제목과 버튼 */}
-            <div className="mb-4 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-              <div>
-                <h1 className="mb-1 text-2xl font-bold md:text-4xl">
-                  {amp.name}
-                </h1>
-                <p className="text-base md:text-xl">{amp.description}</p>
-              </div>
-              <GetInquiryButton model={amp} />
+          {/* 모바일 레이아웃 - 이미지와 유사하게 */}
+          <div className="flex flex-col md:hidden">
+            <h1 className="text-2xl font-bold">{amp.name}</h1>
+            <p className="mt-1 text-base">{amp.description}</p>
+            <div className="mt-6 w-full">
+              <GetInquiryButton model={amp} className="w-full" />
             </div>
-
-            {/* 가격 */}
-            <p className="mb-2 text-xl font-semibold md:text-2xl">
+            <p className="mt-4 text-xl font-semibold">
               ${amp.price.toLocaleString()}
             </p>
+          </div>
+
+          {/* 데스크톱 레이아웃 - 기존 디자인 유지 */}
+          <div className="hidden md:block">
+            <div className="flex flex-col">
+              <div className="mb-4 flex flex-row items-start justify-between">
+                <div>
+                  <h1 className="mb-1 text-4xl font-bold">{amp.name}</h1>
+                  <p className="text-xl">{amp.description}</p>
+                </div>
+                <GetInquiryButton model={amp} />
+              </div>
+              <p className="mb-2 text-2xl font-semibold">
+                ${amp.price.toLocaleString()}
+              </p>
+            </div>
           </div>
 
           {/* 구분선 */}
@@ -64,16 +73,18 @@ export default async function Page({ params }: PageProps) {
             </h3>
             <div className="space-y-3">
               <div className="grid grid-cols-[120px,1fr] gap-y-3 md:grid-cols-[160px,1fr]">
-                {Object.entries(amp.specs).map(([key, value]) => (
-                  <div key={key} className="contents">
-                    <div className="flex items-center gap-2 text-sm text-gray-400 md:text-base">
-                      <span className="h-1.5 w-1.5 rounded-full bg-gray-400"></span>
-                      {key.charAt(0).toUpperCase() +
-                        key.slice(1).replace(/([A-Z])/g, " $1")}
+                {Object.entries(amp.specs)
+                  .filter(([key]) => key !== "rectifier")
+                  .map(([key, value]) => (
+                    <div key={key} className="contents">
+                      <div className="flex items-center gap-2 text-sm text-gray-400 md:text-base">
+                        <span className="h-1.5 w-1.5 rounded-full bg-gray-400"></span>
+                        {key.charAt(0).toUpperCase() +
+                          key.slice(1).replace(/([A-Z])/g, " $1")}
+                      </div>
+                      <div className="text-sm md:text-base">{value}</div>
                     </div>
-                    <div className="text-sm md:text-base">{value}</div>
-                  </div>
-                ))}
+                  ))}
               </div>
             </div>
           </div>

@@ -7,7 +7,7 @@ export async function getAmplifiers(): Promise<IAmplifier[]> {
   try {
     const amplifiers = await prisma.amplifier.findMany({
       orderBy: {
-        createdAt: "desc",
+        price: "asc",
       },
     });
 

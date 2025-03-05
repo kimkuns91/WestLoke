@@ -32,11 +32,11 @@ export const {
     Google({
       clientId: AUTH_GOOGLE_ID,
       clientSecret: AUTH_GOOGLE_SECRET,
-      // authorization: {
-      //   params: {
-      //     prompt: "consent",
-      //   },
-      // },
+      authorization: {
+        params: {
+          prompt: "consent",
+        },
+      },
     }),
     Credentials({
       name: "Credentials",
