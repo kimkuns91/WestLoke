@@ -9,6 +9,61 @@ interface PageProps {
   }>;
 }
 
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
+  const amp = await fetchAmp(slug);
+
+  // 앰프가 없는 경우 기본 메타데이터 반환
+  if (!amp) {
+    return {
+      title: "Amplifier Not Found | Westloke Amps",
+      description: "The requested amplifier could not be found.",
+    };
+  }
+
+  // 앰프 데이터 기반 메타데이터 생성
+  return {
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_SITE_URL || "https://westlokeamps.com"
+    ),
+    title: `${amp.name} | Westloke Amps`,
+    description: amp.description,
+    openGraph: {
+      type: "website",
+      title: `${amp.name} | Westloke Amps`,
+      description: amp.description,
+      images: [
+        {
+          url: amp.thumbnail,
+          width: 800,
+          height: 600,
+          alt: amp.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${amp.name} | Westloke Amps`,
+      description: amp.description,
+      images: [amp.thumbnail],
+    },
+    alternates: {
+      canonical: `/amplifiers/${amp.name_slug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    keywords: [
+      `${amp.name}`,
+      "amplifier",
+      "tube amp",
+      "guitar amp",
+      "Westloke Amps",
+    ],
+  };
+}
+
 export default async function Page({ params }: PageProps) {
   const { slug } = await params;
   const amp = await fetchAmp(slug);
