@@ -134,7 +134,7 @@ export default async function Page({ params }: PageProps) {
             href="https://reverb.com/shop/jeans-gear-garage-260"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center justify-center bg-[#B50000] px-4 py-4 text-center font-medium text-white hover:bg-[#D94C0D] focus:outline-none focus:ring-2 focus:ring-[#F5540E] focus:ring-offset-2 md:flex md:rounded-lg"
+            className="hidden items-center justify-center bg-[#B50000] px-4 py-2.5 text-center font-medium text-white hover:bg-[#D94C0D] focus:outline-none focus:ring-2 focus:ring-[#F5540E] focus:ring-offset-2 md:flex md:rounded-lg"
           >
             {t("buyButton")}
           </Link>
