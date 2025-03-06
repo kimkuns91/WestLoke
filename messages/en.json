@@ -17,7 +17,25 @@
     "signInRequired": "Please sign in to get inquiry",
     "inquirySent": "Inquiry for {name} has been sent",
     "alreadyInquired": "You have already inquired about this product",
-    "inquiryError": "Failed to send inquiry"
+    "inquiryError": "Failed to send inquiry",
+    "guestInquiry": {
+      "title": "Send Inquiry",
+      "description": "Please provide your information to receive a response about {name}",
+      "nameLabel": "Name",
+      "namePlaceholder": "Enter your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "Enter your email",
+      "submitButton": "Send Inquiry",
+      "cancelButton": "Cancel",
+      "processing": "Processing...",
+      "successMessage": "Your inquiry has been sent. You can check the details in your email.",
+      "alreadyInquired": "You have already inquired about this product with this email",
+      "emailInvalid": "Please enter a valid email address",
+      "emailRequired": "Email is required",
+      "nameRequired": "Name is required",
+      "optional": "(Optional)"
+    },
+    "inquirySuccess": "Inquiry has been sent successfully"
   },
   "NotFound": {
     "title": "Page not found",
@@ -132,5 +150,34 @@
       "existingEmailUser": "This email is already registered",
       "useEmailSignIn": "Please use Email Sign In"
     }
+  },
+  "ForgotPassword": {
+    "title": "Forgot Password",
+    "description": "Enter your email address and we'll send you a link to reset your password",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "submit": "Send Reset Link",
+    "backToLogin": "Back to Login",
+    "loading": "Processing...",
+    "success": "Password reset link has been sent to your email",
+    "error": "Failed to send password reset link",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Invalid email format"
+  },
+  "ResetPassword": {
+    "title": "Reset Password",
+    "description": "Enter your new password",
+    "password": "New Password",
+    "confirmPassword": "Confirm Password",
+    "passwordPlaceholder": "Enter your new password",
+    "confirmPasswordPlaceholder": "Confirm your new password",
+    "submit": "Reset Password",
+    "loading": "Processing...",
+    "success": "Password has been reset successfully",
+    "error": "Failed to reset password",
+    "passwordRequired": "Password is required",
+    "passwordMin": "Password must be at least 8 characters",
+    "passwordPattern": "Password must contain letters, numbers, and special characters",
+    "passwordMismatch": "Passwords do not match"
   }
 }

@@ -39,8 +39,12 @@ export async function InquiryTable() {
                 </Badge>
               </TableCell>
               <TableCell>{inquiry.amplifier.name}</TableCell>
-              <TableCell>{inquiry.user.name}</TableCell>
-              <TableCell>{inquiry.user.email}</TableCell>
+              <TableCell>
+                {inquiry.user?.name || inquiry.name || "게스트"}
+              </TableCell>
+              <TableCell>
+                {inquiry.user?.email || inquiry.email || "이메일 없음"}
+              </TableCell>
               <TableCell>{formatDateTime(inquiry.createdAt)}</TableCell>
             </TableRow>
           ))}

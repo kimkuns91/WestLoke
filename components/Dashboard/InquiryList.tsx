@@ -11,7 +11,9 @@ export default async function InquiryList() {
         <div key={inquiry.id} className="flex items-center gap-4">
           <div className="flex-1">
             <p className="font-medium">문의 #{inquiry.id.slice(-4)}</p>
-            <p className="text-sm text-gray-500">{inquiry.user.email}</p>
+            <p className="text-sm text-gray-500">
+              {inquiry.user?.email || inquiry.email || "이메일 없음"}
+            </p>
           </div>
           <Badge
             variant={inquiry.status === "PENDING" ? "destructive" : "default"}

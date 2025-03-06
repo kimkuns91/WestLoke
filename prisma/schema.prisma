@@ -26,6 +26,9 @@ model User {
   inquiries     Inquiry[]
   isSubscribed  Boolean       @default(false)
   
+  resetToken       String?
+  resetTokenExpiry DateTime?
+  
   Authenticator Authenticator[]
  
   createdAt DateTime @default(now())
@@ -101,14 +104,17 @@ model Amplifier {
 model Inquiry {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   amplifierId String   @db.ObjectId
-  userId      String   @db.ObjectId
+  userId      String?  @db.ObjectId
   createdAt   DateTime @default(now())
   status      String   @default("PENDING")
-  
-  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  email       String 
+  name        String?  // 비회원 이름 필드 추가
+
+  user      User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
   amplifier Amplifier @relation(fields: [amplifierId], references: [id], onDelete: Cascade)
 
-  @@unique([userId, amplifierId])
+  @@unique([userId, amplifierId], name: "userAmplifierUnique")
+  @@index([email, amplifierId], name: "emailAmplifierIndex")
 }
 
 // Optional for WebAuthn support

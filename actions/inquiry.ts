@@ -51,11 +51,16 @@ const createEmailTemplate = (params: {
           .button {
             display: inline-block;
             background: ${bgColor};
-            color: white;
+            color: white !important;
             padding: 0.75rem 1.5rem;
             text-decoration: none;
             border-radius: 6px;
             margin-top: 1rem;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
           }
           .product-name {
             color: ${bgColor};
@@ -75,7 +80,7 @@ const createEmailTemplate = (params: {
               type === "create"
                 ? `
               <p>We will get back to you as soon as possible.</p>
-              <a href="${process.env.NEXT_PUBLIC_APP_URL}/inquiry" class="button">
+              <a href="${process.env.NEXT_PUBLIC_SITE_URL}/inquiry" class="button" style="color: white !important; text-decoration: none !important; display: inline-block; background: ${bgColor}; padding: 0.75rem 1.5rem; border-radius: 6px; margin-top: 1rem; font-weight: bold; font-size: 16px; text-align: center; letter-spacing: 0.5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
                 View My Inquiries
               </a>
             `
@@ -166,77 +171,152 @@ const createAdminEmailTemplate = (params: {
   `;
 };
 
-export async function createInquiry({ amplifierId }: { amplifierId: string }) {
+export async function createInquiry({
+  amplifierId,
+  email,
+  name,
+}: {
+  amplifierId: string;
+  email?: string;
+  name?: string;
+}) {
   try {
     const session = await auth();
 
-    if (!session?.user?.id) {
-      throw new Error("User not authenticated");
-    }
+    // 회원 로그인 상태인 경우
+    if (session?.user?.id) {
+      // 기존 문의 확인
+      const existingInquiry = await prisma.inquiry.findFirst({
+        where: {
+          userId: session.user.id,
+          amplifierId,
+        },
+      });
 
-    // 기존 문의 확인
-    const existingInquiry = await prisma.inquiry.findFirst({
-      where: {
-        userId: session.user.id,
-        amplifierId,
-      },
-    });
+      if (existingInquiry) {
+        throw new Error("Already inquired");
+      }
 
-    if (existingInquiry) {
-      throw new Error("Already inquired");
-    }
-
-    const inquiry = await prisma.inquiry.create({
-      data: {
-        amplifierId,
-        userId: session.user.id,
-      },
-      include: {
-        user: {
-          select: {
-            email: true,
-            name: true,
+      const inquiry = await prisma.inquiry.create({
+        data: {
+          amplifierId,
+          userId: session.user.id,
+          email: session.user.email || "",
+        },
+        include: {
+          user: {
+            select: {
+              email: true,
+              name: true,
+            },
+          },
+          amplifier: {
+            select: {
+              name: true,
+            },
           },
         },
-        amplifier: {
-          select: {
-            name: true,
-          },
-        },
-      },
-    });
+      });
 
-    // 사용자에게 확인 메일 발송
-    await sendMail({
-      to: inquiry.user.email,
-      subject: `Inquiry Confirmation - ${inquiry.amplifier.name}`,
-      html: createEmailTemplate({
-        title: "Inquiry Confirmation",
-        userName: inquiry.user.name || "Customer",
-        productName: inquiry.amplifier.name,
-        message: "your inquiry has been received.",
-        type: "create",
-      }),
-    });
-
-    // 관리자에게 알림 메일 발송
-    await sendMail({
-      to: ADMIN_EMAIL!,
-      subject: `New Inquiry - ${inquiry.amplifier.name}`,
-      html: createAdminEmailTemplate({
-        productName: inquiry.amplifier.name,
-        userName: inquiry.user.name || "Customer",
-        userEmail: inquiry.user.email,
-        inquiryTime: new Date().toLocaleString("en-US", {
-          timeZone: "America/Los_Angeles",
-          dateStyle: "full",
-          timeStyle: "long",
+      // 사용자에게 확인 메일 발송
+      await sendMail({
+        to: inquiry.user?.email || inquiry.email,
+        subject: `Inquiry Confirmation - ${inquiry.amplifier.name}`,
+        html: createEmailTemplate({
+          title: "Inquiry Confirmation",
+          userName: inquiry.user?.name || inquiry.name || "Customer",
+          productName: inquiry.amplifier.name,
+          message: "your inquiry has been received.",
+          type: "create",
         }),
-      }),
-    });
+      });
 
-    revalidatePath("/");
-    return inquiry;
+      // 관리자에게 알림 메일 발송
+      await sendMail({
+        to: ADMIN_EMAIL!,
+        subject: `New Inquiry - ${inquiry.amplifier.name}`,
+        html: createAdminEmailTemplate({
+          productName: inquiry.amplifier.name,
+          userName: inquiry.user?.name || inquiry.name || "Customer",
+          userEmail: inquiry.user?.email || inquiry.email,
+          inquiryTime: new Date().toLocaleString("en-US", {
+            timeZone: "America/Los_Angeles",
+            dateStyle: "full",
+            timeStyle: "long",
+          }),
+        }),
+      });
+
+      revalidatePath("/");
+      return inquiry;
+    }
+    // 비회원인 경우
+    else {
+      if (!email) {
+        throw new Error("Email is required for non-member inquiries");
+      }
+
+      // 기존 문의 확인 (이메일 + 앰프 ID로 확인)
+      const existingInquiry = await prisma.inquiry.findFirst({
+        where: {
+          email,
+          amplifierId,
+        },
+      });
+
+      if (existingInquiry) {
+        throw new Error("Already inquired with this email");
+      }
+
+      const amplifier = await prisma.amplifier.findUnique({
+        where: { id: amplifierId },
+        select: { name: true },
+      });
+
+      if (!amplifier) {
+        throw new Error("Amplifier not found");
+      }
+
+      const inquiry = await prisma.inquiry.create({
+        data: {
+          amplifierId,
+          email,
+          name: name || "Guest",
+        },
+      });
+
+      // 비회원 사용자에게 확인 메일 발송
+      await sendMail({
+        to: email,
+        subject: `Inquiry Confirmation - ${amplifier.name}`,
+        html: createEmailTemplate({
+          title: "Inquiry Confirmation",
+          userName: name || "Customer",
+          productName: amplifier.name,
+          message: "your inquiry has been received.",
+          type: "create",
+        }),
+      });
+
+      // 관리자에게 알림 메일 발송
+      await sendMail({
+        to: ADMIN_EMAIL!,
+        subject: `New Inquiry (Non-Member) - ${amplifier.name}`,
+        html: createAdminEmailTemplate({
+          productName: amplifier.name,
+          userName: name || "Guest",
+          userEmail: email,
+          inquiryTime: new Date().toLocaleString("en-US", {
+            timeZone: "America/Los_Angeles",
+            dateStyle: "full",
+            timeStyle: "long",
+          }),
+        }),
+      });
+
+      revalidatePath("/");
+      return inquiry;
+    }
   } catch (error) {
     console.error("Failed to create inquiry:", error);
     throw error;
@@ -278,16 +358,104 @@ export async function getInquiries() {
   }
 }
 
-export async function cancelInquiry(inquiryId: string) {
+export async function cancelInquiry(inquiryId: string, email?: string) {
   try {
     const session = await auth();
 
-    if (!session?.user?.id) {
-      throw new Error("User not authenticated");
-    }
+    // 회원 로그인 상태인 경우
+    if (session?.user?.id) {
+      const inquiry = await prisma.inquiry.findUnique({
+        where: { id: inquiryId },
+        include: {
+          user: {
+            select: {
+              email: true,
+              name: true,
+            },
+          },
+          amplifier: {
+            select: {
+              name: true,
+            },
+          },
+        },
+      });
 
-    const inquiry = await prisma.inquiry.findUnique({
-      where: { id: inquiryId },
+      if (!inquiry || (inquiry.userId && inquiry.userId !== session.user.id)) {
+        throw new Error("Unauthorized");
+      }
+
+      await prisma.inquiry.delete({
+        where: { id: inquiryId },
+      });
+
+      // 사용자에게 취소 확인 메일 발송
+      await sendMail({
+        to: inquiry.user?.email || inquiry.email,
+        subject: `Inquiry Cancelled - ${inquiry.amplifier.name}`,
+        html: createEmailTemplate({
+          title: "Inquiry Cancelled",
+          userName: inquiry.user?.name || inquiry.name || "Customer",
+          productName: inquiry.amplifier.name,
+          message: "your inquiry has been cancelled.",
+          type: "cancel",
+        }),
+      });
+
+      revalidatePath("/inquiry");
+    }
+    // 비회원인 경우
+    else {
+      if (!email) {
+        throw new Error(
+          "Email is required for non-member inquiry cancellation"
+        );
+      }
+
+      const inquiry = await prisma.inquiry.findUnique({
+        where: { id: inquiryId },
+        include: {
+          amplifier: {
+            select: {
+              name: true,
+            },
+          },
+        },
+      });
+
+      if (!inquiry || inquiry.email !== email) {
+        throw new Error("Unauthorized");
+      }
+
+      await prisma.inquiry.delete({
+        where: { id: inquiryId },
+      });
+
+      // 비회원 사용자에게 취소 확인 메일 발송
+      await sendMail({
+        to: inquiry.email,
+        subject: `Inquiry Cancelled - ${inquiry.amplifier.name}`,
+        html: createEmailTemplate({
+          title: "Inquiry Cancelled",
+          userName: inquiry.name || "Customer",
+          productName: inquiry.amplifier.name,
+          message: "your inquiry has been cancelled.",
+          type: "cancel",
+        }),
+      });
+
+      revalidatePath("/inquiry");
+    }
+  } catch (error) {
+    console.error("Failed to cancel inquiry:", error);
+    throw error;
+  }
+}
+
+export async function getRecentInquiries(limit = 5) {
+  try {
+    const inquiries = await prisma.inquiry.findMany({
+      take: limit,
       include: {
         user: {
           select: {
@@ -301,68 +469,78 @@ export async function cancelInquiry(inquiryId: string) {
           },
         },
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
 
-    if (!inquiry || inquiry.userId !== session.user.id) {
-      throw new Error("Unauthorized");
-    }
-
-    await prisma.inquiry.delete({
-      where: { id: inquiryId },
-    });
-
-    // 사용자에게 취소 확인 메일 발송
-    await sendMail({
-      to: inquiry.user.email,
-      subject: `Inquiry Cancelled - ${inquiry.amplifier.name}`,
-      html: createEmailTemplate({
-        title: "Inquiry Cancelled",
-        userName: inquiry.user.name || "Customer",
-        productName: inquiry.amplifier.name,
-        message: "your inquiry has been cancelled.",
-        type: "cancel",
-      }),
-    });
-
-    revalidatePath("/inquiry");
+    return inquiries;
   } catch (error) {
-    console.error("Failed to cancel inquiry:", error);
-    throw error;
+    console.error("Failed to fetch recent inquiries:", error);
+    return [];
   }
 }
 
-export async function getRecentInquiries(limit = 5) {
-  return prisma.inquiry.findMany({
-    orderBy: { createdAt: "desc" },
-    take: limit,
-    select: {
-      id: true,
-      status: true,
-      createdAt: true,
-      user: {
-        select: {
-          email: true,
+export async function getAllInquiries() {
+  try {
+    const inquiries = await prisma.inquiry.findMany({
+      include: {
+        user: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+          },
+        },
+        amplifier: {
+          select: {
+            id: true,
+            name: true,
+            name_slug: true,
+          },
         },
       },
-    },
-  });
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    return inquiries;
+  } catch (error) {
+    console.error("Failed to fetch all inquiries:", error);
+    return [];
+  }
 }
 
-export async function getAllInquiries() {
-  return prisma.inquiry.findMany({
-    orderBy: { createdAt: "desc" },
-    include: {
-      user: {
-        select: {
-          name: true,
-          email: true,
+export async function getInquiriesByEmail(email: string) {
+  try {
+    if (!email) {
+      throw new Error("Email is required");
+    }
+
+    const inquiries = await prisma.inquiry.findMany({
+      where: {
+        email,
+      },
+      include: {
+        amplifier: {
+          select: {
+            id: true,
+            name: true,
+            name_slug: true,
+            thumbnail: true,
+            price: true,
+          },
         },
       },
-      amplifier: {
-        select: {
-          name: true,
-        },
+      orderBy: {
+        createdAt: "desc",
       },
-    },
-  });
+    });
+
+    return inquiries;
+  } catch (error) {
+    console.error("Failed to fetch inquiries by email:", error);
+    throw error;
+  }
 }

@@ -17,7 +17,25 @@
     "signInRequired": "로그인이 필요합니다",
     "inquirySent": "{name} 문의가 전송되었습니다",
     "alreadyInquired": "이미 문의하신 제품입니다",
-    "inquiryError": "문의 전송에 실패했습니다"
+    "inquiryError": "문의 전송에 실패했습니다",
+    "guestInquiry": {
+      "title": "문의하기",
+      "description": "{name}에 대한 문의를 남겨주세요. 이메일로 답변을 받으실 수 있습니다.",
+      "nameLabel": "이름",
+      "namePlaceholder": "이름을 입력해주세요",
+      "emailLabel": "이메일",
+      "emailPlaceholder": "이메일을 입력해주세요",
+      "submitButton": "문의하기",
+      "cancelButton": "취소",
+      "processing": "처리 중...",
+      "successMessage": "문의가 전송되었습니다. 이메일로 상세 내용을 확인하실 수 있습니다.",
+      "alreadyInquired": "이미 이 이메일로 문의하셨습니다",
+      "emailInvalid": "유효한 이메일 주소를 입력해주세요",
+      "emailRequired": "이메일은 필수 입력 항목입니다",
+      "nameRequired": "이름은 필수 입력 항목입니다",
+      "optional": "(선택사항)"
+    },
+    "inquirySuccess": "문의가 성공적으로 전송되었습니다"
   },
   "NotFound": {
     "title": "페이지를 찾을 수 없습니다",
@@ -132,5 +150,34 @@
       "existingEmailUser": "이미 가입된 이메일입니다",
       "useEmailSignIn": "이메일 로그인을 이용해주세요"
     }
+  },
+  "ForgotPassword": {
+    "title": "비밀번호 찾기",
+    "description": "이메일 주소를 입력하시면 비밀번호 재설정 링크를 보내드립니다",
+    "email": "이메일",
+    "emailPlaceholder": "이메일을 입력하세요",
+    "submit": "재설정 링크 보내기",
+    "backToLogin": "로그인으로 돌아가기",
+    "loading": "처리중...",
+    "success": "비밀번호 재설정 링크가 이메일로 전송되었습니다",
+    "error": "비밀번호 재설정 링크 전송에 실패했습니다",
+    "emailRequired": "이메일을 입력해주세요",
+    "emailInvalid": "올바른 이메일 형식이 아닙니다"
+  },
+  "ResetPassword": {
+    "title": "비밀번호 재설정",
+    "description": "새로운 비밀번호를 입력하세요",
+    "password": "새 비밀번호",
+    "confirmPassword": "비밀번호 확인",
+    "passwordPlaceholder": "새 비밀번호를 입력하세요",
+    "confirmPasswordPlaceholder": "비밀번호를 다시 입력하세요",
+    "submit": "비밀번호 재설정",
+    "loading": "처리중...",
+    "success": "비밀번호가 성공적으로 재설정되었습니다",
+    "error": "비밀번호 재설정에 실패했습니다",
+    "passwordRequired": "비밀번호를 입력해주세요",
+    "passwordMin": "비밀번호는 8자 이상이어야 합니다",
+    "passwordPattern": "비밀번호는 영문, 숫자, 특수문자를 포함해야 합니다",
+    "passwordMismatch": "비밀번호가 일치하지 않습니다"
   }
 }
