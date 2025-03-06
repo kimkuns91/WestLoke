@@ -1,6 +1,6 @@
-import FeaturedSection from "@/components/Main/FeaturedSection";
+// import FeaturedSection from "@/components/Main/FeaturedSection";
 import Hero from "@/components/Main/Hero";
-import Location from "@/components/Main/Location";
+// import Location from "@/components/Main/Location";
 import SeoulSession from "@/components/Main/SeoulSession";
 
 export default function HomePage() {
@@ -8,8 +8,8 @@ export default function HomePage() {
     <main className="flex min-h-screen flex-col bg-[#F3EEEA]">
       <Hero />
       <SeoulSession />
-      <FeaturedSection />
-      <Location />
+      {/* <FeaturedSection />
+      <Location /> */}
     </main>
   );
 }

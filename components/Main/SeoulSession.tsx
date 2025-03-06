@@ -8,12 +8,12 @@ const SeoulSession = () => {
         "bg-[url('/images/SeoulSession.png')] bg-cover bg-center bg-no-repeat"
       )}
     >
-      <div className="item-center container flex justify-between px-4 text-white md:px-6">
+      {/* <div className="item-center container flex justify-between px-4 text-white md:px-6">
         <div>
           <h2 className="text-bold text-2xl md:text-4xl">Seoul Session</h2>
           <p className="mt-1 text-sm md:text-base">by Ryle Lee and Junu</p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

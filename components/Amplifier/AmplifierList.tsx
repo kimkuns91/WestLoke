@@ -25,7 +25,7 @@ export default function AmplifierList() {
           Amplifiers
         </h1>
         <p className="mt-2 text-sm text-gray-600 md:text-base">
-          Handcrafted tube amplifiers made in Redmond, WA
+          Handcrafted tube amplifiers made in Bothell, WA
         </p>
       </div>
 

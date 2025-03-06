@@ -46,9 +46,7 @@ const Footer = () => {
           </div>
           <div className="flex items-center gap-2 text-[#595959]">
             <IoLocationSharp className="text-xl" />
-            <p className="text-sm md:text-base">
-              3304 22th SE, Bothell 98021, Washington
-            </p>
+            <p className="text-sm md:text-base">Bothell, Washington</p>
           </div>
         </div>
         <div className="mt-6 border-t border-[#E5E5E5] pt-6 md:mt-8 md:pt-8">

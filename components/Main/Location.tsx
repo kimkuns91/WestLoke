@@ -12,10 +12,10 @@ const Location = () => {
       <div className="container flex flex-col items-start justify-between px-4 text-white md:px-6">
         <div className="mb-4 flex items-center gap-2 text-sm md:mb-6 md:text-base">
           <IoLocationSharp />
-          <p>Redmond, Washington, USA</p>
+          <p>Bothell, Washington, USA</p>
         </div>
         <h2 className="text-bold mb-2 text-2xl md:text-4xl">
-          Made in Redmond,WA
+          Made in Bothell, WA
         </h2>
         <p className="text-sm md:text-base">Made by Hand</p>
       </div>
