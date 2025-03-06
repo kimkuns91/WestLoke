@@ -1,183 +1,186 @@
 {
-  "HomePage": {
-    "title": "Westloke Amps"
-  },
-  "LocaleSwitcher": {
-    "label": "Language",
-    "en": "English",
-    "ko": "Korean"
-  },
-  "Main": {
-    "title": "Westloke Amps",
-    "location": "Bothell,WA"
-  },
-  "GetInquiryButton": {
-    "label": "Get Inquiry",
-    "sending": "Sending...",
-    "signInRequired": "Please sign in to get inquiry",
-    "inquirySent": "Inquiry for {name} has been sent",
-    "alreadyInquired": "You have already inquired about this product",
-    "inquiryError": "Failed to send inquiry",
-    "guestInquiry": {
-      "title": "Send Inquiry",
-      "description": "Please provide your information to receive a response about {name}",
-      "nameLabel": "Name",
-      "namePlaceholder": "Enter your name",
-      "emailLabel": "Email",
-      "emailPlaceholder": "Enter your email",
-      "submitButton": "Send Inquiry",
-      "cancelButton": "Cancel",
-      "processing": "Processing...",
-      "successMessage": "Your inquiry has been sent. You can check the details in your email.",
-      "alreadyInquired": "You have already inquired about this product with this email",
-      "emailInvalid": "Please enter a valid email address",
-      "emailRequired": "Email is required",
-      "nameRequired": "Name is required",
-      "optional": "(Optional)"
+    "HomePage": {
+        "title": "Westloke Amps"
     },
-    "inquirySuccess": "Inquiry has been sent successfully"
-  },
-  "NotFound": {
-    "title": "Page not found",
-    "description": "The page you are looking for does not exist.",
-    "button": "Go to main"
-  },
-  "DropDownUserMenu": {
-    "dashboard": "Dashboard",
-    "mypage": "My Page",
-    "inquiry": "Inquiry",
-    "logout": "Logout"
-  },
-  "NavMenu": {
-    "amplifiers": "Amplifiers",
-    "gallery": "Gallery"
-  },
-  "SignInForm": {
-    "email": "Email",
-    "password": "Password",
-    "startLogin": "Sign in to your account to start",
-    "googleLogin": "Continue with Google",
-    "emailLogin": "Email login",
-    "or": "Or",
-    "signup": "Don't have an account?",
-    "signupLink": "Sign up",
-    "forgotPassword": "Forgot password?"
-  },
-  "UserProfile": {
-    "title": "My Profile",
-    "description": "View and edit your profile information",
-    "name": "Name",
-    "email": "Email",
-    "joinDate": "Join Date",
-    "role": "Role",
-    "userRole": "User",
-    "adminRole": "Admin",
-    "editProfile": "Edit Profile",
-    "deleteAccount": "Delete Account",
-    "deleteAccountDescription": "This action cannot be undone",
-    "cancel": "Cancel",
-    "confirm": "Delete",
-    "deleting": "Processing...",
-    "deleteSuccess": "Account has been deleted",
-    "deleteError": "Failed to delete account",
-    "error": "An error occurred",
-    "errorDescription": "Failed to load user profile"
-  },
-  "InquiryPage": {
-    "title": "My Inquiries",
-    "noInquiries": "No inquiries yet",
-    "price": "Price",
-    "inquiryDate": "Inquiry Date",
-    "cancel": "Cancel",
-    "canceling": "Canceling...",
-    "cancelSuccess": "Inquiry has been canceled",
-    "cancelError": "Failed to cancel inquiry"
-  },
-  "FeaturedSection": {
-    "title": "Watch Video",
-    "description": "Check out our latest video",
-    "button": "Watch Video"
-  },
-  "StayTuned": {
-    "title": "Stay Tuned",
-    "description": "Check out Events and Newsletter",
-    "emailPlaceholder": "Your Email",
-    "subscribe": "Subscribe",
-    "subscribeSuccess": "Successfully subscribed",
-    "alreadySubscribed": "Already subscribed",
-    "invalidEmail": "Invalid email format",
-    "emailRequired": "Email is required",
-    "subscribeError": "Failed to subscribe",
-    "unsubscribe": "Unsubscribe",
-    "unsubscribeSuccess": "Successfully unsubscribed",
-    "subscribing": "Subscribing...",
-    "unsubscribing": "Unsubscribing...",
-    "loading": "Processing..."
-  },
-  "SignUpForm": {
-    "title": "Sign Up",
-    "name": "Name",
-    "email": "Email",
-    "password": "Password",
-    "confirmPassword": "Confirm Password",
-    "namePlaceholder": "Enter your name",
-    "emailPlaceholder": "Enter your email",
-    "passwordPlaceholder": "Enter your password",
-    "confirmPasswordPlaceholder": "Confirm your password",
-    "submit": "Sign Up",
-    "loading": "Processing...",
-    "haveAccount": "Already have an account?",
-    "login": "Login",
-    "errors": {
-      "passwordMismatch": "Passwords do not match",
-      "signupSuccess": "Sign up successful",
-      "redirecting": "Redirecting to login page",
-      "signupFailed": "Sign up failed",
-      "tryAgain": "Please try again",
-      "nameRequired": "Name is required",
-      "nameMin": "Name must be at least 2 characters",
-      "emailRequired": "Email is required",
-      "emailInvalid": "Invalid email format",
-      "passwordRequired": "Password is required",
-      "passwordMin": "Password must be at least 8 characters",
-      "passwordPattern": "Password must contain letters, numbers, and special characters",
-      "confirmPasswordRequired": "Please confirm your password",
-      "confirmPasswordMatch": "Passwords do not match",
-      "existingGoogleUser": "This email is already registered with Google",
-      "useGoogleSignIn": "Please use Google Sign In",
-      "existingGithubUser": "This email is already registered with Github",
-      "useGithubSignIn": "Please use Github Sign In",
-      "existingEmailUser": "This email is already registered",
-      "useEmailSignIn": "Please use Email Sign In"
+    "LocaleSwitcher": {
+        "label": "Language",
+        "en": "English",
+        "ko": "Korean"
+    },
+    "Main": {
+        "title": "Westloke Amps",
+        "location": "Bothell,WA"
+    },
+    "GetInquiryButton": {
+        "label": "Get Inquiry",
+        "sending": "Sending...",
+        "signInRequired": "Please sign in to get inquiry",
+        "inquirySent": "Inquiry for {name} has been sent",
+        "alreadyInquired": "You have already inquired about this product",
+        "inquiryError": "Failed to send inquiry",
+        "guestInquiry": {
+            "title": "Send Inquiry",
+            "description": "Please provide your information to receive a response about {name}",
+            "nameLabel": "Name",
+            "namePlaceholder": "Enter your name",
+            "emailLabel": "Email",
+            "emailPlaceholder": "Enter your email",
+            "submitButton": "Send Inquiry",
+            "cancelButton": "Cancel",
+            "processing": "Processing...",
+            "successMessage": "Your inquiry has been sent. You can check the details in your email.",
+            "alreadyInquired": "You have already inquired about this product with this email",
+            "emailInvalid": "Please enter a valid email address",
+            "emailRequired": "Email is required",
+            "nameRequired": "Name is required",
+            "optional": "(Optional)"
+        },
+        "inquirySuccess": "Inquiry has been sent successfully"
+    },
+    "NotFound": {
+        "title": "Page not found",
+        "description": "The page you are looking for does not exist.",
+        "button": "Go to main"
+    },
+    "DropDownUserMenu": {
+        "dashboard": "Dashboard",
+        "mypage": "My Page",
+        "inquiry": "Inquiry",
+        "logout": "Logout"
+    },
+    "NavMenu": {
+        "amplifiers": "Amplifiers",
+        "gallery": "Gallery"
+    },
+    "SignInForm": {
+        "email": "Email",
+        "password": "Password",
+        "startLogin": "Sign in to your account to start",
+        "googleLogin": "Continue with Google",
+        "emailLogin": "Email login",
+        "or": "Or",
+        "signup": "Don't have an account?",
+        "signupLink": "Sign up",
+        "forgotPassword": "Forgot password?"
+    },
+    "UserProfile": {
+        "title": "My Profile",
+        "description": "View and edit your profile information",
+        "name": "Name",
+        "email": "Email",
+        "joinDate": "Join Date",
+        "role": "Role",
+        "userRole": "User",
+        "adminRole": "Admin",
+        "editProfile": "Edit Profile",
+        "deleteAccount": "Delete Account",
+        "deleteAccountDescription": "This action cannot be undone",
+        "cancel": "Cancel",
+        "confirm": "Delete",
+        "deleting": "Processing...",
+        "deleteSuccess": "Account has been deleted",
+        "deleteError": "Failed to delete account",
+        "error": "An error occurred",
+        "errorDescription": "Failed to load user profile"
+    },
+    "InquiryPage": {
+        "title": "My Inquiries",
+        "noInquiries": "No inquiries yet",
+        "price": "Price",
+        "inquiryDate": "Inquiry Date",
+        "cancel": "Cancel",
+        "canceling": "Canceling...",
+        "cancelSuccess": "Inquiry has been canceled",
+        "cancelError": "Failed to cancel inquiry"
+    },
+    "FeaturedSection": {
+        "title": "Watch Video",
+        "description": "Check out our latest video",
+        "button": "Watch Video"
+    },
+    "StayTuned": {
+        "title": "Stay Tuned",
+        "description": "Check out Events and Newsletter",
+        "emailPlaceholder": "Your Email",
+        "subscribe": "Subscribe",
+        "subscribeSuccess": "Successfully subscribed",
+        "alreadySubscribed": "Already subscribed",
+        "invalidEmail": "Invalid email format",
+        "emailRequired": "Email is required",
+        "subscribeError": "Failed to subscribe",
+        "unsubscribe": "Unsubscribe",
+        "unsubscribeSuccess": "Successfully unsubscribed",
+        "subscribing": "Subscribing...",
+        "unsubscribing": "Unsubscribing...",
+        "loading": "Processing..."
+    },
+    "SignUpForm": {
+        "title": "Sign Up",
+        "name": "Name",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "namePlaceholder": "Enter your name",
+        "emailPlaceholder": "Enter your email",
+        "passwordPlaceholder": "Enter your password",
+        "confirmPasswordPlaceholder": "Confirm your password",
+        "submit": "Sign Up",
+        "loading": "Processing...",
+        "haveAccount": "Already have an account?",
+        "login": "Login",
+        "errors": {
+            "passwordMismatch": "Passwords do not match",
+            "signupSuccess": "Sign up successful",
+            "redirecting": "Redirecting to login page",
+            "signupFailed": "Sign up failed",
+            "tryAgain": "Please try again",
+            "nameRequired": "Name is required",
+            "nameMin": "Name must be at least 2 characters",
+            "emailRequired": "Email is required",
+            "emailInvalid": "Invalid email format",
+            "passwordRequired": "Password is required",
+            "passwordMin": "Password must be at least 8 characters",
+            "passwordPattern": "Password must contain letters, numbers, and special characters",
+            "confirmPasswordRequired": "Please confirm your password",
+            "confirmPasswordMatch": "Passwords do not match",
+            "existingGoogleUser": "This email is already registered with Google",
+            "useGoogleSignIn": "Please use Google Sign In",
+            "existingGithubUser": "This email is already registered with Github",
+            "useGithubSignIn": "Please use Github Sign In",
+            "existingEmailUser": "This email is already registered",
+            "useEmailSignIn": "Please use Email Sign In"
+        }
+    },
+    "ForgotPassword": {
+        "title": "Forgot Password",
+        "description": "Enter your email address and we'll send you a link to reset your password",
+        "email": "Email",
+        "emailPlaceholder": "Enter your email",
+        "submit": "Send Reset Link",
+        "backToLogin": "Back to Login",
+        "loading": "Processing...",
+        "success": "Password reset link has been sent to your email",
+        "error": "Failed to send password reset link",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Invalid email format"
+    },
+    "ResetPassword": {
+        "title": "Reset Password",
+        "description": "Enter your new password",
+        "password": "New Password",
+        "confirmPassword": "Confirm Password",
+        "passwordPlaceholder": "Enter your new password",
+        "confirmPasswordPlaceholder": "Confirm your new password",
+        "submit": "Reset Password",
+        "loading": "Processing...",
+        "success": "Password has been reset successfully",
+        "error": "Failed to reset password",
+        "passwordRequired": "Password is required",
+        "passwordMin": "Password must be at least 8 characters",
+        "passwordPattern": "Password must contain letters, numbers, and special characters",
+        "passwordMismatch": "Passwords do not match"
+    },
+    "ReverbStore": {
+        "buyButton": "Buy on Reverb Store"
     }
-  },
-  "ForgotPassword": {
-    "title": "Forgot Password",
-    "description": "Enter your email address and we'll send you a link to reset your password",
-    "email": "Email",
-    "emailPlaceholder": "Enter your email",
-    "submit": "Send Reset Link",
-    "backToLogin": "Back to Login",
-    "loading": "Processing...",
-    "success": "Password reset link has been sent to your email",
-    "error": "Failed to send password reset link",
-    "emailRequired": "Email is required",
-    "emailInvalid": "Invalid email format"
-  },
-  "ResetPassword": {
-    "title": "Reset Password",
-    "description": "Enter your new password",
-    "password": "New Password",
-    "confirmPassword": "Confirm Password",
-    "passwordPlaceholder": "Enter your new password",
-    "confirmPasswordPlaceholder": "Confirm your new password",
-    "submit": "Reset Password",
-    "loading": "Processing...",
-    "success": "Password has been reset successfully",
-    "error": "Failed to reset password",
-    "passwordRequired": "Password is required",
-    "passwordMin": "Password must be at least 8 characters",
-    "passwordPattern": "Password must contain letters, numbers, and special characters",
-    "passwordMismatch": "Passwords do not match"
-  }
 }

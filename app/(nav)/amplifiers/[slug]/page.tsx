@@ -1,6 +1,8 @@
 import GetInquiryButton from "@/components/GetInquiryButton";
 import Image from "next/image";
+import Link from "next/link";
 import { fetchAmp } from "@/hooks/useFetchAmp";
+import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 interface PageProps {
@@ -67,6 +69,7 @@ export async function generateMetadata({ params }: PageProps) {
 export default async function Page({ params }: PageProps) {
   const { slug } = await params;
   const amp = await fetchAmp(slug);
+  const t = await getTranslations("ReverbStore");
 
   if (!amp) {
     notFound();
@@ -94,12 +97,20 @@ export default async function Page({ params }: PageProps) {
           <div className="flex flex-col md:hidden">
             <h1 className="text-2xl font-bold">{amp.name}</h1>
             <p className="mt-1 text-base">{amp.description}</p>
-            <div className="mt-6 w-full">
-              <GetInquiryButton model={amp} className="w-full" />
-            </div>
             <p className="mt-4 text-xl font-semibold">
               ${amp.price.toLocaleString()}
             </p>
+            <div className="mt-6 w-full">
+              <GetInquiryButton model={amp} className="w-full" />
+            </div>
+            <Link
+              href="https://reverb.com/shop/jeans-gear-garage-260"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 flex w-full items-center justify-center rounded-full bg-[#B50000] px-4 py-2.5 text-center font-medium text-white hover:bg-[#D94C0D] focus:outline-none focus:ring-2 focus:ring-[#F5540E] focus:ring-offset-2"
+            >
+              {t("buyButton")}
+            </Link>
           </div>
 
           {/* 데스크톱 레이아웃 - 기존 디자인 유지 */}
@@ -110,13 +121,23 @@ export default async function Page({ params }: PageProps) {
                   <h1 className="mb-1 text-4xl font-bold">{amp.name}</h1>
                   <p className="text-xl">{amp.description}</p>
                 </div>
-                <GetInquiryButton model={amp} />
+                <div className="flex flex-col gap-2">
+                  <GetInquiryButton model={amp} />
+                </div>
               </div>
               <p className="mb-2 text-2xl font-semibold">
                 ${amp.price.toLocaleString()}
               </p>
             </div>
           </div>
+          <Link
+            href="https://reverb.com/shop/jeans-gear-garage-260"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden items-center justify-center bg-[#B50000] px-4 py-4 text-center font-medium text-white hover:bg-[#D94C0D] focus:outline-none focus:ring-2 focus:ring-[#F5540E] focus:ring-offset-2 md:flex md:rounded-lg"
+          >
+            {t("buyButton")}
+          </Link>
 
           {/* 구분선 */}
           <hr className="my-6 border-gray-200 md:my-2" />
