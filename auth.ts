@@ -1,6 +1,6 @@
 import { AUTH_GOOGLE_ID, AUTH_GOOGLE_SECRET } from "./config";
 
-import type { Adapter } from "@auth/core/adapters";
+import type { Adapter } from "next-auth/adapters";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import NextAuth from "next-auth";
