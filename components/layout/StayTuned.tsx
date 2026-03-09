@@ -7,7 +7,13 @@ import {
   subscribe,
   unsubscribe,
 } from "@/actions/subscribe";
-import { westlokeamps, westlokemusicEmail } from "@/constants/sns";
+import {
+  westlokeamps,
+  westlokemusicEmail,
+  westlokeSoundcloud,
+} from "@/constants/sns";
+
+import { FaSoundcloud } from "react-icons/fa";
 
 import Link from "next/link";
 import { Spinner } from "@nextui-org/react";
@@ -104,6 +110,15 @@ const StayTuned = () => {
           "flex flex-col items-center justify-center"
         )}
       >
+        <Link
+          href={westlokeSoundcloud}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mb-8 flex items-center justify-center gap-2 bg-black px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-800 md:mb-10 md:px-10 md:py-3.5 md:text-base"
+        >
+          <FaSoundcloud className="text-lg md:text-xl" />
+          <span>Soundcloud</span>
+        </Link>
         <h2 className="text-center text-2xl font-semibold md:text-4xl">
           {t("title")}
         </h2>
