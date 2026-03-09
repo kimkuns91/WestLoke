@@ -18,7 +18,6 @@ export type {
   Session,
   User,
 } from "@auth/core/types";
-// import { saltAndHashPassword } from "@/utils/password";
 
 export const {
   handlers,
@@ -56,9 +55,6 @@ export const {
         try {
           const { email, password } =
             await signInSchema.parseAsync(credentials);
-          // const hash = saltAndHashPassword(password);
-          // // logic to salt and hash password
-          // // const pwHash = saltAndHashPassword(password);
 
           const user = await prisma.user.findUnique({
             where: {

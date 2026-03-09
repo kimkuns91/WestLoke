@@ -1,5 +1,7 @@
-import { NextResponse } from "next/server";
-import { auth } from "@/auth";
+import NextAuth from "next-auth";
+import authConfig from "@/auth.config";
+
+const { auth } = NextAuth(authConfig);
 
 const protectedRoutes = ["/mypage", "/dashboard", "/inquiry"];
 const authRoutes = ["/signin", "/signup"];
@@ -14,14 +16,12 @@ export default auth((req) => {
   );
 
   if (isProtectedRoute && !isLoggedIn) {
-    return NextResponse.redirect(new URL("/signin", req.url));
+    return Response.redirect(new URL("/signin", req.url));
   }
 
   if (isAuthRoute && isLoggedIn) {
-    return NextResponse.redirect(new URL("/", req.url));
+    return Response.redirect(new URL("/", req.url));
   }
-
-  return NextResponse.next();
 });
 
 // This line configures which routes the middleware should run on
